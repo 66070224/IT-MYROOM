@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           <Nav/>
           <div className="relative flex justify-center items-center min-h-screen">
             <div className="absolute inset-0 bg-[url('/backgroundit.jpg')] bg-cover bg-center filter blur-sm -z-10"></div>
-            <div className="z-10">{children}</div>
+            <div className="px-4 mx-auto">{children}</div>
           </div>
         </AuthProvider>
       </body>

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const creativeroomreservationSchema = new Schema(
+const creativeroomreservationhistorySchema = new Schema(
     {
         roomname: {
             type: String,
@@ -10,8 +10,8 @@ const creativeroomreservationSchema = new Schema(
             type: String,
             required: true
         },
-        day: {
-            type: String,
+        date: {
+            type: Date,
             required: true
         },
         time: {
@@ -22,5 +22,5 @@ const creativeroomreservationSchema = new Schema(
     { timestamps: true }
 )
 
-const Creativeroomreservation = mongoose.models.Creativeroomreservation || mongoose.model("Creativeroomreservation", creativeroomreservationSchema);
-export default Creativeroomreservation
+const Creativeroomreservationhistory = mongoose.models.Creativeroomreservationhistory || mongoose.model("Creativeroomreservationhistory", creativeroomreservationhistorySchema);
+export default Creativeroomreservationhistory

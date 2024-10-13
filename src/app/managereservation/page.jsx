@@ -18,7 +18,7 @@ function page() {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ username: session?.user?.username })
+                body: JSON.stringify({})
             });
             const data = await response.json();
             setReservations(data.creativeroomreservations || []);
@@ -36,6 +36,9 @@ function page() {
   }
   if (!session && status === "unauthenticated") {
     redirect("/login");
+  }
+  if (session?.user?.role !== "staff") {
+    redirect("/")
   }
 
   const handleDelete = async (reservationId) => {
@@ -61,7 +64,7 @@ function page() {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg w-full justify-center">
       <div className="mb-5">
-      <h2 className="text-xl font-semibold mb-4">My Reservations</h2>
+      <h2 className="text-xl font-semibold mb-4">Reservations</h2>
       {reservations.length === 0 ? (
         <p>No reservations found.</p>
       ) : (
