@@ -7,36 +7,39 @@ import bcrypt from 'bcryptjs';
 const authOptions = {
     providers: [
         CredentialsProvider({
-          name: "credentials",
-          credentials: {},
-          async authorize(credentials, req) {
-            console.log("Incoming credentials:", credentials);
-        
-            const { username, password } = credentials;
-        
-            try {
-                await connectMongoDB();
-                console.log("Connected to MongoDB");
-        
-                const user = await User.findOne({ username });
-        
-                if (!user) {
-                    return null;
-                }
-        
-                const passwordMatch = await bcrypt.compare(password, user.password);
-                console.log("Password match:", passwordMatch);
-        
-                if (!passwordMatch) {
-                    return null;
-                }
-        
-                return user;
+            name: "credentials",
+            credentials: {},
+            async authorize(credentials, req) {
+                console.log("Incoming credentials:", credentials);
 
-            } catch (error) {
-                return null;
+                const { username, password } = credentials;
+
+                try {
+                    await connectMongoDB();
+                    console.log("Connected to MongoDB");
+
+                    const user = await User.findOne({ username });
+
+                    if (!user) {
+                        console.log("User not found");
+                        return null;
+                    }
+
+                    const passwordMatch = await bcrypt.compare(password, user.password);
+                    console.log("Password match:", passwordMatch);
+
+                    if (!passwordMatch) {
+                        console.log("Password does not match");
+                        return null;
+                    }
+
+                    return user;
+
+                } catch (error) {
+                    console.error("Authorization error:", error);
+                    return null;
+                }
             }
-        }
         })
     ],
     session: {
