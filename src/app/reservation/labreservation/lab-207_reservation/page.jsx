@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useSession } from "next-auth/react";
 import { redirect } from 'next/navigation';
 
-function page() {
+function Page() {
     const { data: session, status } = useSession();
 
     const username = session?.user?.username;
@@ -165,4 +165,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

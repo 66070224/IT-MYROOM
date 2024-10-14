@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-function page() {
+function Page() {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg w-full justify-center">
         <h1 className="mb-10 text-center text-black font-bold text-2xl">Make reservations</h1>
@@ -11,4 +11,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

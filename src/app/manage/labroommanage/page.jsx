@@ -4,7 +4,7 @@ import React from 'react'
 import Link from 'next/link'
 import { useSession } from 'next-auth/react';
 
-function page() {
+function Page() {
 
     const { data: session, status } = useSession();
 
@@ -23,4 +23,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

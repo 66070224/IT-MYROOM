@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation';
 
-function page() {
+function Page() {
   const [addIsOpen, addSetIsOpen] = useState(true);
   const [updateIsOpen, updateSetIsOpen] = useState(false);
   const [deleteIsOpen, deleteSetIsOpen] = useState(false);
@@ -296,4 +296,4 @@ function page() {
   )
 }
 
-export default page
+export default Page
