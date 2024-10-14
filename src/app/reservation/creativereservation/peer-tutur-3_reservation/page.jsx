@@ -164,7 +164,7 @@ function Page() {
                 </div>
           )}
         </div>
-        <h2 className="text-center text-black font-bold mb-4">PEER-TUTUR-2 RESERVATION</h2>
+        <h2 className="text-center text-black font-bold mb-4">PEER-TUTUR-3 RESERVATION</h2>
         <form onSubmit={handleReservation}>
             <div className="mb-4 text-center">
                 <label className="mx-2">Day</label>    

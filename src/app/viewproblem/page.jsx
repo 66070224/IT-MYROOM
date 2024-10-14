@@ -80,7 +80,7 @@ function Page() {
                   <th className="border px-4 py-2">Username</th>
                   <th className="border px-4 py-2">Date</th>
                   <th className="border px-4 py-2">Title</th>
-                  <th className="border px-4 py-2">Delete</th>
+                  <th className="border px-4 py-2">View</th>
                 </tr>
               </thead>
               <tbody>
