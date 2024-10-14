@@ -56,7 +56,6 @@ function Page() {
             <h2 className="text-center text-black font-bold mb-4">LOGIN</h2>
             <form onSubmit={handleLogin}>
                 <div className="mb-4">
-                    <input type="text" />
                     <input
                         onChange = {(e) => setUsername(e.target.value)}
                         type="text"

@@ -32,7 +32,7 @@ function Page() {
 
         try {
 
-            const resCheckUser = await fetch("http://localhost:3000/api/checkuser", {
+            const resCheckUser = await fetch("/api/checkuser", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -47,7 +47,7 @@ function Page() {
                 return;
             }
 
-            const res = await fetch("http://localhost:3000/api/register", {
+            const res = await fetch("/api/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -91,7 +91,6 @@ function Page() {
             <h2 className="text-center text-black font-bold mb-4">REGISTER</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <input type="text" />
                     <input
                     onChange = {(e) => setUsername(e.target.value)}
                     type="text"

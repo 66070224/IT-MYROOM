@@ -27,7 +27,7 @@ function Page() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({roomname: "peer-tutur-2"})
+                    body: JSON.stringify({roomname: "peer-tutur-3"})
                 });
                 const data = await response.json();
                 
@@ -85,7 +85,7 @@ function Page() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ 
-                    roomname: "peer-tutur-2", 
+                    roomname: "peer-tutur-3", 
                     day, 
                     time 
                 })
@@ -104,7 +104,7 @@ function Page() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    roomname: "peer-tutur-2", 
+                    roomname: "peer-tutur-3", 
                     username, 
                     day,
                     time
