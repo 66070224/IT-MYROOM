@@ -69,6 +69,7 @@ function page() {
           <thead>
             <tr>
               <th className="border px-4 py-2">Room Name</th>
+              <th className="border px-4 py-2">Seat</th>
               <th className="border px-4 py-2">Username</th>
               <th className="border px-4 py-2">Date</th>
               <th className="border px-4 py-2">Time</th>
@@ -79,6 +80,7 @@ function page() {
             {reservations.map((reservation) => (
               <tr key={reservation._id}>
                 <td className="border px-4 py-2">{reservation.roomname}</td>
+                <td className="border px-4 py-2">{reservation.seat}</td>
                 <td className="border px-4 py-2">{reservation.username}</td>
                 <td className="border px-4 py-2">{new Date(reservation.date).toLocaleDateString()}</td>
                 <td className="border px-4 py-2">{reservation.time}</td>
