@@ -1,6 +1,6 @@
 import { connectMongoDB } from '../../../../lib/mongodb';
 import Labroomreservation from '../../../../models/labroomreservation';
-import Labreservationhistory from '../../../../models/labreservationhistory';
+import Labroomreservationhistory from '../../../../models/labroomreservationhistory';
 
 const resetOldLabReservations = async () => {
     try {
@@ -18,7 +18,7 @@ const resetOldLabReservations = async () => {
                 time: reservation.time
             }));
 
-            await Labreservationhistory.insertMany(historyEntries);
+            await Labroomreservationhistory.insertMany(historyEntries);
             console.log(`${historyEntries.length} lab reservations moved to history successfully.`);
         }
 
