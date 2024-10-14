@@ -9,6 +9,7 @@ function Nav() {
   const { data: session } = useSession();
   const [reservationIsOpen, reservationSetIsOpen] = useState(false);
   const [userIsOpen, userSetIsOpen] = useState(false);
+  const [staffIsOpen, setStaffIsOpen] = useState(false);
 
   return (
     <ul className="navbar flex justify-center bg-blue-700 text-white font-medium relative">
@@ -17,6 +18,35 @@ function Nav() {
           <Link href="/">IT Myroom</Link>
         </li>
       </div>
+
+      {session?.user?.role === "staff" && (
+        <li className="mx-5 relative">
+          <button
+            onClick={() => setStaffIsOpen(!staffIsOpen)}
+            className="focus:outline-none"
+          >
+            Staff
+            <span
+              className={`ml-1 transform transition-transform duration-200 ${staffIsOpen ? 'rotate-180' : 'rotate-0'}`}
+            >
+              ▼
+            </span>
+          </button>
+          {staffIsOpen && (
+            <div className="absolute bg-blue-700 text-white rounded-lg shadow-md mt-2 z-20">
+              <ul className="p-2">
+                <li>
+                  <Link href="/managereservation">Manage_reservation</Link>
+                </li>
+                <li>
+                  <Link href="/viewproblem">Manage_problem</Link>
+                </li>
+              </ul>
+            </div>
+          )}
+        </li>
+      )}
+
       <li className="mx-5 relative">
         <button
           onClick={() => reservationSetIsOpen(!reservationIsOpen)}
@@ -38,15 +68,11 @@ function Nav() {
               <li>
                 <Link href="/reservation/creativereservation">Creative</Link>
               </li>
-              {session?.user?.role === "staff" && (
-                <li>
-                  <Link href="/managereservation">Manage</Link>
-                </li>
-              )}
             </ul>
           </div>
         )}
       </li>
+
       {!session ? (
         <li className="mx-5">
           <Link href="/login">Login</Link>
@@ -70,11 +96,6 @@ function Nav() {
                 <li>
                   <Link href="/viewreservation">View</Link>
                 </li>
-                {session?.user?.role === "staff" && (
-                  <li>
-                    <Link href="/manage">Manage</Link>
-                  </li>
-                )}
                 <li>
                   <button onClick={() => signOut()}>Logout</button>
                 </li>

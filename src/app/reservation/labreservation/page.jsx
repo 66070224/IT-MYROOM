@@ -2,34 +2,25 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { useSession } from 'next-auth/react';
+import { useSession } from "next-auth/react";
 import { redirect } from 'next/navigation';
 
 function page() {
-    const {data: session} = useSession();
-    if (!session) redirect("/login")
+    const { data: session, status } = useSession();
+
+    if (status === "loading") {
+        return <div>Loading...</div>;
+    }
+    if (!session && status === "unauthenticated") {
+        redirect("/login");
+    }
+
   return (
-    <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm justify-center">
-        <h2 className="text-center text-black font-bold mb-4">LAB RESERVATION</h2>
-        <form>
-            <div className="mb-4">
-                <input
-                type="text"
-                placeholder="Username"
-                className="w-full p-2 border border-gray-300 rounded"
-                />
-            </div>
-            <div className="mb-4">
-                <input
-                type="password"
-                placeholder="Password"
-                className="w-full p-2 border border-gray-300 rounded"
-                />
-            </div>
-            <div className="text-center">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded">Finish!</button>
-            </div>
-        </form>
+    <div className="bg-white p-20 rounded-lg shadow-lg w-full justify-center">
+        <h1 className="mb-20 text-center text-black font-bold text-2xl">Lab Reservations</h1>
+        <Link href="/reservation/labreservation/lab-203_reservation" className="bg-[url('/lab203bg.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">LAB-203</Link>
+        <Link href="/reservation/labreservation/lab-205_reservation" className="bg-[url('/lab205bg.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">LAB-205</Link>
+        <Link href="/reservation/labreservation/lab-207_reservation" className="bg-[url('/lab207bg.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">LAB-207</Link>
     </div>
   )
 }

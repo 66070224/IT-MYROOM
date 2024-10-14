@@ -27,7 +27,7 @@ function page() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({roomname: "creative-2"})
+                    body: JSON.stringify({roomname: "peer-tutur-1"})
                 });
                 const data = await response.json();
                 
@@ -65,7 +65,7 @@ function page() {
 
         fetchReservations();
         }, [session, status]);
-
+    
     if (status === "loading") {
         return <div>Loading...</div>;
     }
@@ -85,7 +85,7 @@ function page() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ 
-                    roomname: "creative-2", 
+                    roomname: "peer-tutur-1", 
                     day, 
                     time 
                 })
@@ -104,7 +104,7 @@ function page() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    roomname: "creative-2", 
+                    roomname: "peer-tutur-1", 
                     username, 
                     day,
                     time
@@ -164,7 +164,7 @@ function page() {
                 </div>
           )}
         </div>
-        <h2 className="text-center text-black font-bold mb-4">CREATIVE-2 RESERVATION</h2>
+        <h2 className="text-center text-black font-bold mb-4">PEER-TUTUR-1 RESERVATION</h2>
         <form onSubmit={handleReservation}>
             <div className="mb-4 text-center">
                 <label className="mx-2">Day</label>    
