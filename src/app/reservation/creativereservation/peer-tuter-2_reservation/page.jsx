@@ -27,7 +27,7 @@ function Page() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({roomname: "peer-tutur-2"})
+                    body: JSON.stringify({roomname: "peer-tuter-2"})
                 });
                 const data = await response.json();
                 
@@ -85,7 +85,7 @@ function Page() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ 
-                    roomname: "peer-tutur-2", 
+                    roomname: "peer-tuter-2", 
                     day, 
                     time 
                 })
@@ -104,7 +104,7 @@ function Page() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    roomname: "peer-tutur-2", 
+                    roomname: "peer-tuter-2", 
                     username, 
                     day,
                     time
@@ -164,7 +164,7 @@ function Page() {
                 </div>
           )}
         </div>
-        <h2 className="text-center text-black font-bold mb-4">PEER-TUTUR-2 RESERVATION</h2>
+        <h2 className="text-center text-black font-bold mb-4">PEER-TUTER-2 RESERVATION</h2>
         <form onSubmit={handleReservation}>
             <div className="mb-4 text-center">
                 <label className="mx-2">Day</label>    

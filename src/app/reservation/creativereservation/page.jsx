@@ -23,9 +23,9 @@ function Page() {
           <Link href="/reservation/creativereservation/creative-2_reservation" className="bg-[url('/c2.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">CREATIVE-2</Link>
         </div>
         <div className='mt-40 text-center'>
-        <Link href="/reservation/creativereservation/peer-tutur-1_reservation" className="bg-[url('/pt1.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTUR-1</Link>
-        <Link href="/reservation/creativereservation/peer-tutur-2_reservation" className="bg-[url('/pt2.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTUR-2</Link>
-        <Link href="/reservation/creativereservation/peer-tutur-3_reservation" className="bg-[url('/pt3.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTUR-3</Link>
+        <Link href="/reservation/creativereservation/peer-tuter-1_reservation" className="bg-[url('/pt1.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTUR-1</Link>
+        <Link href="/reservation/creativereservation/peer-tuter-2_reservation" className="bg-[url('/pt2.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTUR-2</Link>
+        <Link href="/reservation/creativereservation/peer-tuter-3_reservation" className="bg-[url('/pt3.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTUR-3</Link>
         </div>
     </div>
   )
