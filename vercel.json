@@ -1,7 +1,7 @@
 {
     "crons": [
         {
-            "path": "api/resetreservation",
+            "path": "/api/resetreservation",
             "schedule": "59 16 * * *"
         }
     ]
