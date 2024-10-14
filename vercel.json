@@ -1,11 +1,11 @@
 {
     "crons": [
         {
-            "path": "/api/resetreservation",
+            "path": "/api/resetreservation/route",
             "schedule": "59 16 * * *"
         },
         {
-            "path": "/api/resetlabreservation",
+            "path": "/api/resetlabreservation/route",
             "schedule": "59 16 * * *"
         }
     ]
