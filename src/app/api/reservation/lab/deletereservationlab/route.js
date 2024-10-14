@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { connectMongoDB } from "../../../../../../lib/mongodb";
-import Labroomreservation from "../../../../../../models/labroomreservaion";
+import Labroomreservation from "../../../../../../models/labroomreservation";
 
 export async function POST(req) {
     try {
