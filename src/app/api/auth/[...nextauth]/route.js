@@ -60,7 +60,7 @@ const authOptions = {
             return session;
         },
     },
-    secret: process.env.NextAuth_SECRET,
+    secret: process.env.NEXTAUTH_SECRET,
     pages: {
         signIn: "/login"
     }
