@@ -13,7 +13,6 @@ function Page() {
   const [available, setAvailable] = useState(false);
 
   const [selectedRoomIdUpdate, setSelectedRoomIdUpdate] = useState();
-  const [selectedRoomIdDelete, setSelectedRoomIdDelete] = useState();
 
   const [newAvailability, setNewAvailability] = useState(true);
 
@@ -47,6 +46,13 @@ function Page() {
 
     fetchCreativeRooms();
   }, [session]);
+
+  useEffect(() => {
+    const selectedRoom = creativeRooms.find(room => room._id === selectedRoomIdUpdate);
+    if (selectedRoom) {
+      setNewAvailability(selectedRoom.available);
+    }
+  }, [selectedRoomIdUpdate, creativeRooms]);
 
   if (status === "loading") {
     return <div>Loading...</div>;
