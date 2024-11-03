@@ -15,9 +15,11 @@ export async function POST(req) {
         }
 
         const labrooms = await Labroom.find(query);
+        console.log(labrooms);
 
         return NextResponse.json({ labrooms });
     } catch (error) {
+        await Labroom.create({ roomname, available: true });
         console.log(error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
