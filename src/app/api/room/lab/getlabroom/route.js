@@ -13,6 +13,7 @@ export async function POST(req) {
         if (roomname) {
             query.roomname = roomname;
         }
+
         const labrooms = await Labroom.find(query);
 
         return NextResponse.json({ labrooms });

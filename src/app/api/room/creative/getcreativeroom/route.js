@@ -14,6 +14,7 @@ export async function POST(req) {
             query.roomname = roomname;
         }
         const creativerooms = await Creativeroom.find(query);
+        console.log(creativerooms);
 
         return NextResponse.json({ creativerooms });
     } catch (error) {
