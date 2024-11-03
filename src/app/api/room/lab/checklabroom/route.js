@@ -5,12 +5,12 @@ import Labroom from "../../../../../../models/labroom";
 export async function POST(req) {
     try {
         await connectMongoDB();
+        const { roomname } = await req.json();
+        const labroom = await Labroom.findOne({ roomname }).select("_id");
 
-        const labrooms = await Labroom.find({});
-        return NextResponse.json({ labrooms });
+        return NextResponse.json({ labroom });
     } catch (error) {
-        await Labroom.create({ roomname: "LAB-203", available: true });
         console.log(error);
-        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
+    
 }
