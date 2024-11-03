@@ -114,7 +114,7 @@ function Page() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ 
-                    roomname: "creative-1", 
+                    roomname: "CREATIVE-1", 
                     day, 
                     time 
                 })
