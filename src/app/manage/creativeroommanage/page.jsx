@@ -6,9 +6,6 @@ import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation';
 
 function Page() {
-  const [addIsOpen, addSetIsOpen] = useState(true);
-  const [updateIsOpen, updateSetIsOpen] = useState(false);
-  const [deleteIsOpen, deleteSetIsOpen] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -18,7 +15,6 @@ function Page() {
   const [selectedRoomIdUpdate, setSelectedRoomIdUpdate] = useState();
   const [selectedRoomIdDelete, setSelectedRoomIdDelete] = useState();
 
-  const [newRoomname, setNewRoomname] = useState("");
   const [newAvailability, setNewAvailability] = useState(true);
 
   const { data: session, status } = useSession();
@@ -40,7 +36,7 @@ function Page() {
             if (Array.isArray(data.creativerooms)) {
                 setCreativeRooms(data.creativerooms);
                 setSelectedRoomIdUpdate(data.creativerooms[0]._id);
-                setSelectedRoomIdDelete(data.creativerooms[0]._id);
+                setNewAvailability(data.creativerooms[0].available);
             } else {
                 setCreativeRooms(data.creativerooms || []);
             }
