@@ -73,6 +73,9 @@ function Page() {
                     body: JSON.stringify({roomname: "CREATIVE-2"})
                 });
                 const data = await response.json();
+                if (!data){
+                    setError("Failed to load rooms");
+                }
 
                 if (!data.creativerooms[0].available) {
                     setError("Room not available! Sorry.");
