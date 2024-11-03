@@ -6,11 +6,11 @@ export async function POST(req) {
     try {
         await connectMongoDB();
         
-        const { _id, roomname, available } = await req.json();
+        const { _id, available } = await req.json();
 
         const updatedRoom = await Creativeroom.findByIdAndUpdate(
             _id,
-            { roomname, available },
+            { available },
             { new: true }
         );
 
