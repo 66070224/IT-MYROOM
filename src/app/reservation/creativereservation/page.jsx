@@ -12,7 +12,7 @@ function Page() {
     useEffect(() => {
       const fetchRooms = async () => {
           try {
-              const response = await fetch('/api/rooms');
+              const response = await fetch('/api/room/creative/getcreativeroom');
               const data = await response.json();
               setRooms(data);
           } catch (error) {
@@ -32,15 +32,26 @@ function Page() {
   return (
     <div className="bg-white p-20 rounded-lg shadow-lg w-full justify-center">
         <h1 className="mb-20 text-center text-black font-bold text-2xl">Creative reservations</h1>
-        <div className='mb-20 text-center'>
-          <Link href="/reservation/creativereservation/creative-1_reservation" className="bg-[url('/c1.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">CREATIVE-1</Link>
-          <Link href="/reservation/creativereservation/creative-2_reservation" className="bg-[url('/c2.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">CREATIVE-2</Link>
-        </div>
-        <div className='mt-40 text-center'>
-        <Link href="/reservation/creativereservation/peer-tuter-1_reservation" className="bg-[url('/pt1.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTER-1</Link>
-        <Link href="/reservation/creativereservation/peer-tuter-2_reservation" className="bg-[url('/pt2.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTER-2</Link>
-        <Link href="/reservation/creativereservation/peer-tuter-3_reservation" className="bg-[url('/pt3.jpg')] bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5">PEER-TUTER-3</Link>
-        </div>
+        {rooms.slice(0, 2).map((room) => (
+                    <Link
+                        key={room._id}
+                        href={room.available ? `/reservation/creativereservation/${room.roomname.toLowerCase().replace(/\s/g, '_')}_reservation` : '#'}
+                        className={`bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5 ${room.available ? 'bg-blue-500' : 'bg-red-500 cursor-not-allowed'}`}
+                        style={{ backgroundImage: `url(${room.roomname === 'CREATIVE-1' ? '/c1.jpg' : '/c2.jpg'})` }}
+                    >
+                        {room.roomname}
+                    </Link>
+                ))}
+        {rooms.slice(2).map((room) => (
+                    <Link
+                        key={room._id}
+                        href={room.available ? `/reservation/creativereservation/${room.roomname.toLowerCase().replace(/\s/g, '_')}_reservation` : '#'}
+                        className={`bg-cover bg-center filter text-white px-5 py-10 rounded text-4xl mx-5 ${room.available ? 'bg-blue-500' : 'bg-red-500 cursor-not-allowed'}`}
+                        style={{ backgroundImage: `url(${room.roomname === 'PEER-TUTER-1' ? '/pt1.jpg' : room.roomname === 'PEER-TUTER-2' ? '/pt2.jpg' : '/pt3.jpg'})` }}
+                    >
+                        {room.roomname}
+                    </Link>
+                ))}
     </div>
   )
 }

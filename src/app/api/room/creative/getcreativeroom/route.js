@@ -4,8 +4,16 @@ import Creativeroom from "../../../../../../models/creativeroom";
 
 export async function POST(req) {
     try {
+
+        const { roomname } = await req.json();
         await connectMongoDB();
-        const creativerooms = await Creativeroom.find({});
+
+        const query = {};
+
+        if (roomname) {
+            query.roomname = roomname;
+        }
+        const creativerooms = await Creativeroom.find(query);
 
         return NextResponse.json({ creativerooms });
     } catch (error) {

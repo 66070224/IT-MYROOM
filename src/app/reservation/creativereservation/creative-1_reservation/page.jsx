@@ -11,6 +11,8 @@ function Page() {
 
     const [schedule, setSchedule] = useState([]);
 
+    const [roomavailable, setroomsavailable] = useState(true);
+
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
@@ -63,6 +65,25 @@ function Page() {
             }
         };
 
+        const fetchRoom = async () => {
+            try {
+                const response = await fetch("/api/reservation/creative/getcreativeroom", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({roomname: "creative-1"})
+                });
+                const data = await response.json();
+                setroomsavailable(data.creativerooms[0].available);
+
+            } catch (error) {
+                console.error("Error fetching rooms:", error);
+                setError("Failed to load rooms");
+            }
+        };
+
+        fetchRoom();
         fetchReservations();
         }, [session, status]);
 
