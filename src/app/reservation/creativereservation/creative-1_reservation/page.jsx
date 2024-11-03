@@ -75,7 +75,11 @@ function Page() {
                     body: JSON.stringify({roomname: "creative-1"})
                 });
                 const data = await response.json();
-                setroomsavailable(data.creativerooms[0].available);
+
+                if (!data.creativerooms[0].available) {
+                    setError("Room not available! Sorry.");
+                }
+                
 
             } catch (error) {
                 console.error("Error fetching rooms:", error);
@@ -99,6 +103,11 @@ function Page() {
         setSuccess("");
     
         try {
+
+            if (!data.creativerooms[0].available) {
+                setError("Room not available! Sorry.");
+                return;
+            }
     
             const resCheckCreativeRoom = await fetch("/api/reservation/creative/checkreservationcreative", {
                 method: "POST",
