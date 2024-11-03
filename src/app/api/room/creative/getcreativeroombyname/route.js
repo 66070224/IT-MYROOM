@@ -8,6 +8,7 @@ export async function POST(req) {
         await connectMongoDB();
 
         const creativerooms = await Creativeroom.find({ roomname });
+        console.log("Fetched Creative Rooms:", creativerooms);
         return NextResponse.json({ creativerooms });
     } catch (error) {
         console.log(error);

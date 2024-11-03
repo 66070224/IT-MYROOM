@@ -74,9 +74,9 @@ function Page() {
                     },
                     body: JSON.stringify({roomname: "CREATIVE-1"})
                 });
-                const data = await response.json();
+                const { data } = await response.json();
 
-                console.log(data?.creativerooms[0]?.available);
+                console.log(data.creativerooms[0].available);
 
                 if (data.creativerooms[0].available === false) {
                     setAvailable(data.creativerooms[0].available);
