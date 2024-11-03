@@ -79,7 +79,6 @@ function Page() {
                 if (!data.creativerooms[0].available) {
                     setAvailable(data.creativerooms[0].available);
                     setError("Room not available! Sorry.");
-
                 }
 
             } catch (error) {
@@ -102,9 +101,6 @@ function Page() {
     const handleReservation = async (e) => {
         e.preventDefault();
         setSuccess("");
-        if (!available) {
-            return;
-        }
     
         try {
 
