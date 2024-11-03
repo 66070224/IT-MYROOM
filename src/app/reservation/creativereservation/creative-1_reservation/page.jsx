@@ -108,25 +108,6 @@ function Page() {
     
         try {
     
-            const resCheckCreativeRoom = await fetch("/api/reservation/creative/checkreservationcreative", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ 
-                    roomname: "creative-1", 
-                    day, 
-                    time 
-                })
-            })
-    
-            const { creativeroomreservations } = await resCheckCreativeRoom.json();
-    
-            if (creativeroomreservations.length > 0) {
-                setError("Already reservation");
-                return;
-            }
-    
             const res = await fetch("/api/reservation/creative/makereservationcreative", {
                 method: "POST",
                 headers: {
