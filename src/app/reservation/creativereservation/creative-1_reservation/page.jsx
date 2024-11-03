@@ -101,6 +101,10 @@ function Page() {
     const handleReservation = async (e) => {
         e.preventDefault();
         setSuccess("");
+
+        if (!available) {
+            setError("Room not available! Sorry.");
+        }
     
         try {
 
