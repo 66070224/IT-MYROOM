@@ -14,6 +14,8 @@ function Page() {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
+    const [available, setAvailable] = useState(false);
+
     const username = session?.user?.username;
 
     const [day, setDay] = useState("Monday");
@@ -75,7 +77,9 @@ function Page() {
                 const data = await response.json();
 
                 if (!data.creativerooms[0].available) {
+                    setAvailable(data.creativerooms[0].available);
                     setError("Room not available! Sorry.");
+
                 }
 
             } catch (error) {
@@ -98,13 +102,11 @@ function Page() {
     const handleReservation = async (e) => {
         e.preventDefault();
         setSuccess("");
+        if (!available) {
+            return;
+        }
     
         try {
-
-            if (!data.creativerooms[0].available) {
-                setError("Room not available! Sorry.");
-                return;
-            }
     
             const resCheckCreativeRoom = await fetch("/api/reservation/creative/checkreservationcreative", {
                 method: "POST",
