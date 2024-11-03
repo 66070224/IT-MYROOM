@@ -77,7 +77,7 @@ function Page() {
                 const { data } = await response.json();
 
                 if (!data.available) {
-                    setAvailable(data.creativerooms[0].available);
+                    setAvailable(data.available);
                     setError("Room not available! Sorry.");
                 }
 
