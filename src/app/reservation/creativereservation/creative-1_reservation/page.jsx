@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { useSession } from "next-auth/react";
 import { redirect } from 'next/navigation';
 import Timetable from '@/app/components/Timetable';
-import Labroom from '../../../../../models/labroom';
 
 function Page() {
     const { data: session, status } = useSession();
@@ -25,7 +24,6 @@ function Page() {
     useEffect(() => {
         const fetchReservations = async () => {
             try {
-                await Labroom.create({ roomname: "CREATIVE-1", available: true });
                 const response = await fetch("/api/reservation/creative/getreservationcreative", {
                     method: "POST",
                     headers: {
