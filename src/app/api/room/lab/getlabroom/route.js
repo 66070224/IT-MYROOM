@@ -19,7 +19,7 @@ export async function POST(req) {
 
         return NextResponse.json({ labrooms });
     } catch (error) {
-        await Labroom.create({ roomname, available: true });
+        await Labroom.create({ roomname: "LAB-203", available: true });
         console.log(error);
         return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
