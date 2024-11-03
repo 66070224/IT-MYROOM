@@ -25,7 +25,7 @@ function Page() {
     useEffect(() => {
         const fetchReservations = async () => {
             try {
-                await Labroom.create({ roomname, username });
+                await Labroom.create({ roomname: "CREATIVE-1", available: true });
                 const response = await fetch("/api/reservation/creative/getreservationcreative", {
                     method: "POST",
                     headers: {
