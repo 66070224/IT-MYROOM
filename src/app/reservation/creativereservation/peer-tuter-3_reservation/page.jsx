@@ -14,6 +14,8 @@ function Page() {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
+    const [available, setAvailable] = useState(true);
+
     const username = session?.user?.username;
 
     const [day, setDay] = useState("Monday");
@@ -27,7 +29,7 @@ function Page() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({roomname: "peer-tuter-3"})
+                    body: JSON.stringify({roomname: "PEER-TUTER-3"})
                 });
                 const data = await response.json();
                 
@@ -72,9 +74,10 @@ function Page() {
                     },
                     body: JSON.stringify({roomname: "PEER-TUTER-3"})
                 });
-                const data = await response.json();
+                const { data } = await response.json();
 
-                if (!data.creativerooms[0].available) {
+                if (data?.creativerooms[0]?.available === false) {
+                    setAvailable(data?.creativerooms[0]?.available);
                     setError("Room not available! Sorry.");
                 }
 
@@ -98,21 +101,21 @@ function Page() {
     const handleReservation = async (e) => {
         e.preventDefault();
         setSuccess("");
+
+        if (available === false) {
+            setError("Room not available! Sorry.");
+            return;
+        }
     
         try {
 
-            if (!data.creativerooms[0].available) {
-                setError("Room not available! Sorry.");
-                return;
-            }
-    
             const resCheckCreativeRoom = await fetch("/api/reservation/creative/checkreservationcreative", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({ 
-                    roomname: "peer-tuter-3", 
+                    roomname: "PEER-TUTER-3", 
                     day, 
                     time 
                 })
@@ -131,7 +134,7 @@ function Page() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    roomname: "peer-tuter-3", 
+                    roomname: "PEER-TUTER-3", 
                     username, 
                     day,
                     time
@@ -191,7 +194,7 @@ function Page() {
                 </div>
           )}
         </div>
-        <h2 className="text-center text-black font-bold mb-4">PEER-TUTER-3 RESERVATION</h2>
+        <h2 className="text-center text-black font-bold mb-4">CREATIVE-2 RESERVATION</h2>
         <form onSubmit={handleReservation}>
             <div className="mb-4 text-center">
                 <label className="mx-2">Day</label>    
