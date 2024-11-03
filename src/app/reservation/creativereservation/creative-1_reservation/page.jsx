@@ -67,7 +67,7 @@ function Page() {
 
         const fetchRoom = async () => {
             try {
-                const response = await fetch("/api/room/creative/getcreativeroom", {
+                const response = await fetch("/api/room/creative/getcreativeroombyname", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
