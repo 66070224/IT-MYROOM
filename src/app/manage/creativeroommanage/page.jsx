@@ -9,9 +9,6 @@ function Page() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const [roomname, setRoomname] = useState("");
-  const [available, setAvailable] = useState(false);
-
   const [selectedRoomIdUpdate, setSelectedRoomIdUpdate] = useState();
 
   const [newAvailability, setNewAvailability] = useState(true);
