@@ -14,7 +14,7 @@ function Page() {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
-    const [available, setAvailable] = useState(false);
+    const [available, setAvailable] = useState(true);
 
     const username = session?.user?.username;
 
