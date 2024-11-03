@@ -63,6 +63,28 @@ function Page() {
             }
         };
 
+        const fetchRoom = async () => {
+            try {
+                const response = await fetch("/api/room/creative/getcreativeroom", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({roomname: "CREATIVE-2"})
+                });
+                const data = await response.json();
+
+                if (!data.creativerooms[0].available) {
+                    setError("Room not available! Sorry.");
+                }
+
+            } catch (error) {
+                console.error("Error fetching rooms:", error);
+                setError("Failed to load rooms");
+            }
+        };
+
+        fetchRoom();
         fetchReservations();
         }, [session, status]);
 
@@ -78,6 +100,11 @@ function Page() {
         setSuccess("");
     
         try {
+
+            if (!data.creativerooms[0].available) {
+                setError("Room not available! Sorry.");
+                return;
+            }
     
             const resCheckCreativeRoom = await fetch("/api/reservation/creative/checkreservationcreative", {
                 method: "POST",
