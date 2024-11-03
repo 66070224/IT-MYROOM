@@ -15,6 +15,8 @@ function Page() {
 
     const [reservedSeats, setReservedSeats] = useState([]);
 
+    const [available, setAvailable] = useState(true);
+
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
@@ -40,7 +42,7 @@ function Page() {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        roomname: "lab-203", 
+                        roomname: "LAB-203", 
                         time: selectedTime
                     })
                 });
@@ -56,6 +58,30 @@ function Page() {
                 console.error("Error fetching reservations:", error);
             }
         };
+
+        const fetchRoom = async () => {
+            try {
+                const response = await fetch("/api/room/lab/getlabroombyname", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({roomname: "LAB-203"})
+                });
+                const { data } = await response.json();
+
+                if (data?.creativerooms[0]?.available === false) {
+                    setAvailable(data?.creativerooms[0]?.available);
+                    setError("Room not available! Sorry.");
+                }
+
+            } catch (error) {
+                console.error("Error fetching rooms:", error);
+                setError("Failed to load rooms");
+            }
+        };
+
+        fetchRoom();
 
         fetchReservations();
     }, [session, status, selectedTime]);
@@ -73,6 +99,10 @@ function Page() {
 
     const handleConfirm = async () => {
         setSuccess("");
+        if (available === false) {
+            setError("Room not available! Sorry.");
+            return;
+        }
         if (selectedSeat && selectedTime) {
             const today = new Date();
             today.setHours(today.getUTCHours()+14);
@@ -84,7 +114,7 @@ function Page() {
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        roomname: "lab-203",
+                        roomname: "LAB-203",
                         seat: selectedSeat,
                         username,
                         date: today,
