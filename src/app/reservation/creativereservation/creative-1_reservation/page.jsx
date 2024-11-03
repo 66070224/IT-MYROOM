@@ -67,7 +67,7 @@ function Page() {
 
         const fetchRoom = async () => {
             try {
-                const response = await fetch("/api/reservation/creative/getcreativeroom", {
+                const response = await fetch("/api/room/creative/getcreativeroom", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -79,7 +79,6 @@ function Page() {
                 if (!data.creativerooms[0].available) {
                     setError("Room not available! Sorry.");
                 }
-                
 
             } catch (error) {
                 console.error("Error fetching rooms:", error);
