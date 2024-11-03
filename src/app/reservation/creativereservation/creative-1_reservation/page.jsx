@@ -11,8 +11,6 @@ function Page() {
 
     const [schedule, setSchedule] = useState([]);
 
-    const [roomavailable, setroomsavailable] = useState(true);
-
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
 
@@ -102,11 +100,6 @@ function Page() {
         setSuccess("");
     
         try {
-
-            if (!data.creativerooms[0].available) {
-                setError("Room not available! Sorry.");
-                return;
-            }
     
             const resCheckCreativeRoom = await fetch("/api/reservation/creative/checkreservationcreative", {
                 method: "POST",
