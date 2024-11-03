@@ -104,6 +104,7 @@ function Page() {
 
         if (!available) {
             setError("Room not available! Sorry.");
+            return;
         }
     
         try {
