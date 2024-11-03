@@ -72,7 +72,7 @@ function Page() {
                     headers: {
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({roomname: "creative-1"})
+                    body: JSON.stringify({roomname: "CREATIVE-1"})
                 });
                 const data = await response.json();
 
