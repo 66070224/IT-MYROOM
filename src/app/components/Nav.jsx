@@ -36,10 +36,13 @@ function Nav() {
             <div className="absolute bg-blue-700 text-white rounded-lg shadow-md mt-2 z-20">
               <ul className="p-2">
                 <li>
-                  <Link href="/managereservation">Manage_reservation</Link>
+                  <Link href="/managereservation">Manage_reservations</Link>
                 </li>
                 <li>
-                  <Link href="/viewproblem">Manage_problem</Link>
+                  <Link href="/viewproblem">Manage_problems</Link>
+                </li>
+                <li>
+                  <Link href="/manage">Manage_rooms</Link>
                 </li>
               </ul>
             </div>
