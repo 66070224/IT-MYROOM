@@ -19,5 +19,6 @@ export async function POST(req) {
         return NextResponse.json({ labrooms });
     } catch (error) {
         console.log(error);
+        return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
 }
