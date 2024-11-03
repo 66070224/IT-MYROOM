@@ -102,7 +102,7 @@ function Page() {
         e.preventDefault();
         setSuccess("");
 
-        if (available === false) {
+        if (!available) {
             setError("Room not available! Sorry.");
             return;
         }
