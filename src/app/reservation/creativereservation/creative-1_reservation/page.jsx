@@ -76,8 +76,8 @@ function Page() {
                 });
                 const { data } = await response.json();
 
-                if (data?.creativeroom.available === false) {
-                    setAvailable(data?.creativeroom.available);
+                if (data.creativerooms[0].available === false) {
+                    setAvailable(data.creativerooms[0].available);
                     setError("Room not available! Sorry.");
                 }
 
@@ -102,7 +102,7 @@ function Page() {
         e.preventDefault();
         setSuccess("");
 
-        if (!available) {
+        if (available === false) {
             setError("Room not available! Sorry.");
             return;
         }
