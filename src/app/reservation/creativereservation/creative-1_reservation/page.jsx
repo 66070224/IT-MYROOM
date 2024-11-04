@@ -79,7 +79,7 @@ function Page() {
                 console.log(data?.creativerooms[0]?.available);
 
                 if (data?.creativerooms[0]?.available === false) {
-                    setAvailable(data?.creativerooms[0]?.available);
+                    setAvailable(false);
                     setError("Room not available! Sorry.");
                 }
 
