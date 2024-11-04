@@ -74,9 +74,9 @@ function Page() {
                     },
                     body: JSON.stringify({roomname: "PEER-TUTER-1"})
                 });
-                const { data } = await response.json();
+                const { creativerooms } = await response.json();
 
-                if (data?.creativerooms[0]?.available === false) {
+                if (creativerooms[0]?.available === false) {
                     setAvailable(false);
                     setError("Room not available! Sorry.");
                 }
