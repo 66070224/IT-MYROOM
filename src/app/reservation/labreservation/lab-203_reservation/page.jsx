@@ -68,10 +68,10 @@ function Page() {
                     },
                     body: JSON.stringify({roomname: "LAB-203"})
                 });
-                const { data } = await response.json();
+                const { labrooms } = await response.json();
 
-                if (data?.creativerooms[0]?.available === false) {
-                    setAvailable(data?.creativerooms[0]?.available);
+                if (labrooms[0]?.available === false) {
+                    setAvailable(false);
                     setError("Room not available! Sorry.");
                 }
 
