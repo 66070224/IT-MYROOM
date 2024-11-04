@@ -8,6 +8,7 @@ export async function POST(req) {
         await connectMongoDB();
 
         const labrooms = await Labroom.find({ roomname });
+        console.log("labroom:", labrooms);
         return NextResponse.json({ labrooms });
     } catch (error) {
         console.log(error);
